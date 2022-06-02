@@ -54,6 +54,13 @@ function registrarUsuario(req, res) {
 
 }
 
+function iniciarSesion(req, res) {
+
+    var params = req.body
+    var email = params.email
+    var password = params.password
+}
+
 module.exports = {
     prueba,
     registrarUsuario
