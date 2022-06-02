@@ -59,6 +59,14 @@ function iniciarSesion(req, res) {
     var params = req.body
     var email = params.email
     var password = params.password
+
+    usuariosModelo.findOne({ email: email }, (err, user) => {
+        if (err) {
+            res.send(500).send({ message: "No se ha podido guardar el usuario" })
+        } else {
+
+        }
+    })
 }
 
 module.exports = {
