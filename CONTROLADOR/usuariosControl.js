@@ -64,7 +64,13 @@ function iniciarSesion(req, res) {
         if (err) {
             res.send(500).send({ message: "No se ha podido guardar el usuario" })
         } else {
+            if (!user) {
+                res.send(404).send({ message: "El usuario no existe" })
+            } else {
+                bcrypt.compare(password, usuario.password, function(err, check) {
 
+                })
+            }
         }
     })
 }
