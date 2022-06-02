@@ -2,6 +2,7 @@
 const bcrypt = require('bcrypt')
 const defaultRequest = require('rest/interceptor/defaultRequest')
 var usuariosModelo = require('../MODELO/usuarios')
+var usuario = new usuariosModelo()
 
 function prueba(req, res) {
     res.status(200).send({
@@ -11,7 +12,7 @@ function prueba(req, res) {
 
 
 function registrarUsuario(req, res) {
-    var usuario = new usuariosModelo()
+
     var params = req.body
     console.log(params)
 
