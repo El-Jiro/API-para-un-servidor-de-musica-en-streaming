@@ -62,16 +62,22 @@ function iniciarSesion(req, res) {
 
     usuariosModelo.findOne({ email: email }, (err, user) => {
         if (err) {
-            res.send(500).send({ message: "No se ha podido guardar el usuario" })
+            res.status(500).send({ message: "No se ha podido guardar el usuario" })
         } else {
             if (!user) {
-                res.send(404).send({ message: "El usuario no existe" })
+                res.status(404).send({ message: "El usuario no existe" })
             } else {
                 bcrypt.compare(password, usuario.password, function(err, check) {
                     if (check) {
                         //devolver los datos del usuario logeado
-                        res.status(200).send({ usuario: user })
                         console.log("Se ha iniciado sesión con éxito")
+                        if (params.gethash) {
+                            //devolver un token de jwt
+                        } else {
+                            res.status(200).send({ usuario: user })
+                        }
+                    } else {
+                        res.status(404).send({ message: "Contraseña incorrecta" })
                     }
                 })
             }
