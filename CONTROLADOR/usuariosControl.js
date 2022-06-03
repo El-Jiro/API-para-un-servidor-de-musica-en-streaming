@@ -87,5 +87,6 @@ function iniciarSesion(req, res) {
 
 module.exports = {
     prueba,
-    registrarUsuario
+    registrarUsuario,
+    iniciarSesion
 }
