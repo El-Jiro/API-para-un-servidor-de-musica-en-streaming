@@ -62,7 +62,7 @@ function iniciarSesion(req, res) {
 
     usuariosModelo.findOne({ email: email }, (err, user) => {
         if (err) {
-            res.status(500).send({ message: "No se ha podido guardar el usuario" })
+            res.status(500).send({ message: "Error en la petición" })
         } else {
             if (!user) {
                 res.status(404).send({ message: "El usuario no existe" })
@@ -71,13 +71,9 @@ function iniciarSesion(req, res) {
                     if (check) {
                         //devolver los datos del usuario logeado
                         console.log("Se ha iniciado sesión con éxito")
-                        if (params.gethash) {
-                            //devolver un token de jwt
-                        } else {
-                            res.status(200).send({ usuario: user })
-                        }
+                        res.status(200).send({ user: user })
                     } else {
-                        res.status(404).send({ message: "Contraseña incorrecta" })
+                        res.status(401).send({ message: "Contraseña incorrecta" })
                     }
                 })
             }
