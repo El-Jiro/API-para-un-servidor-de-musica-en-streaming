@@ -69,7 +69,6 @@ function iniciarSesion(req, res) {
             } else {
                 bcrypt.compare(password, usuario.password, function(err, check) {
                     if (check) {
-                        //devolver los datos del usuario logeado
                         console.log("Se ha iniciado sesión con éxito")
                         res.status(200).send({ user: user })
                     } else {
