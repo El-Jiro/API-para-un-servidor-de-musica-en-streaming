@@ -67,7 +67,7 @@ function iniciarSesion(req, res) {
             if (!user) {
                 res.status(404).send({ message: "El usuario no existe" })
             } else {
-                bcrypt.compare(password, usuario.password, function(err, check) {
+                bcrypt.compare(password, user.password, function(err, check) {
                     if (check) {
                         console.log("Se ha iniciado sesión con éxito")
                         res.status(200).send({ user: user })
