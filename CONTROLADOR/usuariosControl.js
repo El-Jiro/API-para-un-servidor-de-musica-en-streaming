@@ -2,6 +2,7 @@
 const bcrypt = require('bcrypt')
 const defaultRequest = require('rest/interceptor/defaultRequest')
 var usuariosModelo = require('../MODELO/usuarios')
+var jwt = require('../SERVICIO/jwt')
 var usuario = new usuariosModelo()
 
 function prueba(req, res) {
@@ -70,7 +71,11 @@ function iniciarSesion(req, res) {
                 bcrypt.compare(password, user.password, function(err, check) {
                     if (check) {
                         console.log("Se ha iniciado sesión con éxito")
-                        res.status(200).send({ user: user })
+                        if (params.gethash) {
+                            res.status(201).send({ token: jwt.createToken(user) })
+                        } else {
+                            res.status(200).send({ user: user })
+                        }
                     } else {
                         res.status(401).send({ message: "Contraseña incorrecta" })
                     }
