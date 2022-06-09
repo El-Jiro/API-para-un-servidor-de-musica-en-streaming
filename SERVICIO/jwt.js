@@ -5,6 +5,7 @@ const moment = require('moment')
 var claveSecreta = 'secret_key'
 
 function createToken(user) {
+
     const payload = {
         sub: user._id,
         name: user.nombre,
