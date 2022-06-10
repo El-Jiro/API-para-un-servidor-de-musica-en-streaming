@@ -63,7 +63,7 @@ function iniciarSesion(req, res) {
 
     usuariosModelo.findOne({ email: email }, (err, user) => {
         if (err) {
-            res.status(500).send({ message: "Error en la petición" })
+            res.status(500).send({ message: "Error interno del servidor" })
         } else {
             if (!user) {
                 res.status(404).send({ message: "El usuario no existe" })
