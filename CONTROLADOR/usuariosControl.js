@@ -1,9 +1,10 @@
 'use-strict'
+
 const bcrypt = require('bcrypt')
-const defaultRequest = require('rest/interceptor/defaultRequest')
 var usuariosModelo = require('../MODELO/usuarios')
-var jwt = require('../SERVICIO/jwt')
 var usuario = new usuariosModelo()
+var jwt = require('../SERVICIO/jwt')
+
 
 function probar(req, res) {
     res.status(200).send({
