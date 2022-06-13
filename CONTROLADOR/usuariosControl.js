@@ -5,12 +5,17 @@ var usuariosModelo = require('../MODELO/usuarios')
 var jwt = require('../SERVICIO/jwt')
 var usuario = new usuariosModelo()
 
-function prueba(req, res) {
+function probar(req, res) {
     res.status(200).send({
         message: 'Probando una acción del controlador de usuarios de la api REST con node y mongo'
     })
 }
 
+function darBienvenida(req, res) {
+    res.status(200).send({
+        message: 'Bienvenido al curso Iván Azamar'
+    })
+}
 
 function registrarUsuario(req, res) {
 
@@ -86,7 +91,8 @@ function iniciarSesion(req, res) {
 }
 
 module.exports = {
-    prueba,
+    probar,
+    darBienvenida,
     registrarUsuario,
-    iniciarSesion
+    iniciarSesion,
 }
