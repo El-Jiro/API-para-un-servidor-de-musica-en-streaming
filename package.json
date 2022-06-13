@@ -16,6 +16,5 @@
     "moment": "^2.29.3",
     "mongoose": "^6.3.2",
     "rest": "^2.0.0"
-  },
-  "devDependencies": {}
+  }
 }
