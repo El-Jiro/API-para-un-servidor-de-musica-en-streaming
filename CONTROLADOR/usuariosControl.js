@@ -114,4 +114,5 @@ module.exports = {
     darBienvenida,
     registrarUsuario,
     iniciarSesion,
+    actualizarUsuario
 }
