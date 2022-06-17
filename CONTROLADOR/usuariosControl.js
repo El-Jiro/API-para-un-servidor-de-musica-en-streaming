@@ -91,6 +91,24 @@ function iniciarSesion(req, res) {
     })
 }
 
+function actualizarUsuario(req, res) {
+
+    var user_id = req.params.id
+    var update = req.body
+
+    usuariosModelo.findByIdAndUpdate(user_id, update, (err, userUpdate) => {
+        if (err) {
+            res.status(500).send({ message: 'Error al actualizar el usuario' })
+        } else {
+            if (!userUpdate) {
+                res.status(404).send({ message: 'No se encontró el usuario' })
+            } else {
+                res.status(200).send({ user: userUpdate })
+            }
+        }
+    })
+}
+
 module.exports = {
     probar,
     darBienvenida,
