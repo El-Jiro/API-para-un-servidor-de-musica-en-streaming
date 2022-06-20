@@ -5,12 +5,12 @@ const momento = require('moment')
 var claveSecreta = 'secret_key'
 
 function validarAcceso(req, res, next) {
-    if (!req.headers.autorizacion) {
+    if (!req.headers.Authorization) {
         res.status(400).send({ message: 'La petición del usuario no contiene datos de autorización' })
     }
 
     //replace elimina las comillas dobles y simples de la petición, el modificador g es para afectar toda la cadena
-    var token = req.headers.autorizacion.replace(/[""]+/g, '')
+    var token = req.headers.Authorization.replace(/[""]+/g, '')
 
     try {
 
