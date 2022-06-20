@@ -104,6 +104,7 @@ function actualizarUsuario(req, res) {
                 res.status(404).send({ message: 'No se encontró el usuario' })
             } else {
                 res.status(200).send({ user: userUpdate })
+                console.log('Usuario actualizado con éxito')
             }
         }
     })
