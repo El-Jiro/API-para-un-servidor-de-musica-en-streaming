@@ -26,3 +26,7 @@ function validarAcceso(req, res, next) {
     req.user = payload
     next()
 }
+
+module.exports = {
+    validarAcceso
+}
