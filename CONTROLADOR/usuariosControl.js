@@ -2,6 +2,7 @@
 
 const bcrypt = require('bcrypt')
 var usuariosModelo = require('../MODELO/usuarios')
+const { param } = require('../RUTAS/usuariosRuta')
 var usuario = new usuariosModelo()
 var jwt = require('../SERVICIO/jwt')
 
@@ -110,10 +111,27 @@ function actualizarUsuario(req, res) {
     })
 }
 
+function eliminarUsuario(req, res) {
+    var user_id = req.params.id
+    var remove = req.body
+
+    usuariosModelo.remove(user_id, remove, (err, userDelete) => {
+        if (err) {
+            res.status(500).send({ message: 'No se ha podido eliminar el usuario' })
+        } else {
+            if (!userDelete) {
+                res.status(404).send({ message: 'No se encontró el usuario' })
+            } else {
+                res.status(200).send({ message: 'Se ha eliminado el usuario con éxito' })
+            }
+        }
+    })
+}
 module.exports = {
     probar,
     darBienvenida,
     registrarUsuario,
     iniciarSesion,
-    actualizarUsuario
+    actualizarUsuario,
+    eliminarUsuario
 }
