@@ -113,18 +113,21 @@ function actualizarUsuario(req, res) {
 
 function eliminarUsuario(req, res) {
     var user_id = req.params.id
-    var remove = req.body
 
-    usuariosModelo.remove(user_id, remove, (err, userDelete) => {
+    usuariosModelo.findByIdAndRemove(user_id, (err, usuarioBorrado) => {
         if (err) {
             res.status(500).send({ message: 'No se ha podido eliminar el usuario' })
         } else {
-            if (!userDelete) {
-                res.status(404).send({ message: 'No se encontró el usuario' })
+            if (!usuarioBorrado) {
+                res.status(404).send({ message: 'El usuario no existe' })
             } else {
-                res.status(200).send({ message: 'Se ha eliminado el usuario con éxito' })
+                res.status(200).send({
+                    message: 'Se ha eliminado el usuario con éxito',
+                    usuario: usuarioBorrado
+                })
             }
         }
+
     })
 }
 module.exports = {
