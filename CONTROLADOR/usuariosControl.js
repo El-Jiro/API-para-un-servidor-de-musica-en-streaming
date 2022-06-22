@@ -6,7 +6,6 @@ var usuario = new usuariosModelo()
 const jwt = require('../SERVICIO/jwt')
 const path = require('path')
 const fs = require('fs')
-const { update } = require('../MODELO/usuarios')
 
 
 function probar(req, res) {

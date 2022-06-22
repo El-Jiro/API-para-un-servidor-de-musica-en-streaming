@@ -1,6 +1,6 @@
 'use strict'
-var express = require('express')
-var bodyParser = require('body-parser')
+const express = require('express')
+const bodyParser = require('body-parser')
 
 var app = express()
 var user_routes = require('./RUTAS/usuariosRuta')
