@@ -2,9 +2,11 @@
 
 const bcrypt = require('bcrypt')
 var usuariosModelo = require('../MODELO/usuarios')
-const { param } = require('../RUTAS/usuariosRuta')
 var usuario = new usuariosModelo()
-var jwt = require('../SERVICIO/jwt')
+const jwt = require('../SERVICIO/jwt')
+const path = require('path')
+const fs = require('fs')
+const { update } = require('../MODELO/usuarios')
 
 
 function probar(req, res) {
@@ -112,6 +114,7 @@ function actualizarUsuario(req, res) {
 }
 
 function eliminarUsuario(req, res) {
+
     var user_id = req.params.id
 
     usuariosModelo.findByIdAndRemove(user_id, (err, usuarioBorrado) => {
@@ -130,11 +133,47 @@ function eliminarUsuario(req, res) {
 
     })
 }
+
+function actualizarFoto(req, res) {
+    var user_id = req.params.id
+
+    if (req.files) {
+        var file_path = req.files.image.path
+        var file_array = file_path.split('\\')
+        var file_name = file.split[2]
+        var extension = file_array[2].split('\.')
+
+        if (extension[1] == 'png' || extension[1] == 'gif' || extension[1] == 'jpg') {
+
+            usuariosModelo.findByIdAndUpdate(user_id, { image: file_array[2] }, (err, userUpdate) => {
+                if (err) {
+                    res.status(500).send({ message: 'No se ha podido actualizar el usuario' })
+                } else {
+                    if (!userUpdate) {
+                        res.status(404).send({ message: 'El usuario no existe' })
+                    } else {
+                        res.status(200).send({
+                            image: file_name,
+                            usuario: userUpdate
+                        })
+                    }
+                }
+            })
+        } else {
+            res.status(400).send({ message: 'Formato de archivo no válido' })
+        }
+    } else {
+        res.status(500).send({ message: 'Error al cargar el archivo' })
+    }
+}
+
+
 module.exports = {
     probar,
     darBienvenida,
     registrarUsuario,
     iniciarSesion,
     actualizarUsuario,
-    eliminarUsuario
+    eliminarUsuario,
+    actualizarFoto
 }

@@ -12,4 +12,5 @@ api.post('/registro', usuarioControl.registrarUsuario)
 api.post('/login', usuarioControl.iniciarSesion)
 api.put('/actualizar-usuario/:id', md_auth.validarAcceso, usuarioControl.actualizarUsuario)
 api.delete('/eliminar-usuario/:id', md_auth.validarAcceso, usuarioControl.eliminarUsuario)
+api.post('/actualizar-foto/:id', md_auth.validarAcceso, usuarioControl.actualizarFoto)
 module.exports = api
