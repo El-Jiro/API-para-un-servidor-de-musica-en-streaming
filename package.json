@@ -1,6 +1,6 @@
 {
     "name": "conexion_mongodb",
-    "version": "3.2.1",
+    "version": "3.3.0",
     "description": "Una API REST para un servidor de música en streaming",
     "main": "index.js",
     "scripts": {
@@ -17,5 +17,9 @@
         "moment": "^2.29.3",
         "mongoose": "^6.3.2",
         "rest": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "connect-multiparty": "^2.2.0"
     }
 }

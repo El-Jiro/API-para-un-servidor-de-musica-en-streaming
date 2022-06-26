@@ -4,8 +4,8 @@ var express = require('express');
 var usuarioControl = require('../CONTROLADOR/usuariosControl')
 var md_auth = require('../MIDDLEWARE/autenticar')
 var api = express.Router();
-const multipart = require('connect-multiparty')
-var dir_fotos = multipart({ uploadDir: './FOTOS/usuario' })
+const multiparty = require('connect-multiparty')
+var dir_fotos = multiparty({ uploadDir: './FOTOS/usuario' })
 
 
 api.get('/probando-controlador', usuarioControl.probar)
