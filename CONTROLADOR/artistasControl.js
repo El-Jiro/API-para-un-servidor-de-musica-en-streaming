@@ -27,3 +27,7 @@ function añadirArtista(req, res) {
         }
     })
 }
+
+module.exports = {
+    añadirArtista
+}
