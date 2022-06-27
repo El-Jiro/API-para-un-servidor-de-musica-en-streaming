@@ -27,6 +27,25 @@ function añadirArtista(req, res) {
     })
 }
 
+function buscarArtista(req, res) {
+
+    var artistaID = req.params.id
+
+    artistasModelo.findById(artistaID, (err, artistaBD) => {
+
+        if (err) {
+            res.status(500).send({ message: 'Ha ocurrido un error' })
+        } else {
+            if (!artistaBD) {
+                res.status(404).send({ message: 'No se ha encontrado el artista' })
+            } else {
+                res.status(200).send({ artista: artistaBD })
+            }
+        }
+    })
+
+}
 module.exports = {
-    añadirArtista
+    añadirArtista,
+    buscarArtista
 }

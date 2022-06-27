@@ -1,6 +1,6 @@
 {
     "name": "conexion_mongodb",
-    "version": "4.0.1",
+    "version": "4.1.0",
     "description": "Una API REST para un servidor de música en streaming",
     "main": "index.js",
     "scripts": {
