@@ -1,5 +1,4 @@
 'use-strict'
-const { error } = require('console')
 var artistasModelo = require('../MODELO/artistas')
 var artista = new artistasModelo()
 
