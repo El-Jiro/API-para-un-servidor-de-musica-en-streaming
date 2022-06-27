@@ -1,8 +1,10 @@
 'use-strict'
 
 const express = require('express')
-var artistasControl = require('../CONTROLADOR/artistasControl')
 const api = express.Router()
+var artistasControl = require('../CONTROLADOR/artistasControl')
 
 api.post('/agregar-artista', artistasControl.añadirArtista)
+api.get('/buscar-artista/:id', artistasControl.buscarArtista)
+
 module.exports = api
