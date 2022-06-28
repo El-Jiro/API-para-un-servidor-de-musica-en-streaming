@@ -95,9 +95,32 @@ function actualizarArtista(req, res) {
 
 }
 
+function eliminarArtista(req, res) {
+
+    var artist_id = req.params.id
+    artistasModelo.findByIdAndRemove(artist_id, (err, artistaBorrado) => {
+
+        if (err) {
+            res.status(500).send({ message: 'No se ha podido eliminar el artista' })
+        } else {
+            if (!artistaBorrado) {
+                res.status(404).send({ message: 'No se encontró el artista' })
+            } else {
+                res.status(200).send({
+                    artista: artistaBorrado,
+                    message: 'Se eliminó correctamente el artista'
+                })
+            }
+
+        }
+
+    })
+}
+
 module.exports = {
     añadirArtista,
     buscarArtista,
     buscarArtistas,
-    actualizarArtista
+    actualizarArtista,
+    eliminarArtista
 }
