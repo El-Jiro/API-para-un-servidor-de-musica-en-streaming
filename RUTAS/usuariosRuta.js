@@ -1,9 +1,9 @@
 'use-strict'
 
-var express = require('express');
+const express = require('express');
+const api = express.Router();
 var usuarioControl = require('../CONTROLADOR/usuariosControl')
 var md_auth = require('../MIDDLEWARE/autenticar')
-var api = express.Router();
 const multiparty = require('connect-multiparty')
 var dir_fotos = multiparty({ uploadDir: './FOTOS/usuario' })
 

@@ -73,8 +73,31 @@ function buscarArtistas(req, res) {
     })
 }
 
+function actualizarArtista(req, res) {
+
+    var artistaID = req.params.id
+    var data = req.body
+
+    artistasModelo.findByIdAndUpdate(artistaID, data, (err, artistaActualizado) => {
+        if (err) {
+            res.status(500).send({ message: 'Error al actualizar la información del artista' })
+        } else {
+            if (!artistaActualizado) {
+                res.status(404).send({ message: 'No se encontró el artista' })
+            } else {
+                res.status(200).send({
+                    artista: artistaActualizado,
+                    message: 'Se actualizó correctamente la información del artista'
+                })
+            }
+        }
+    })
+
+}
+
 module.exports = {
     añadirArtista,
     buscarArtista,
-    buscarArtistas
+    buscarArtistas,
+    actualizarArtista
 }

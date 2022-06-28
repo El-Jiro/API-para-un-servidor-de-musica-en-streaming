@@ -1,8 +1,7 @@
 'use strict'
 const express = require('express')
 const bodyParser = require('body-parser')
-
-var app = express()
+const app = express()
 var user_routes = require('./RUTAS/usuariosRuta')
 var artist_routes = require('./RUTAS/artistasRuta')
 
