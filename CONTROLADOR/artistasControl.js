@@ -1,6 +1,7 @@
 'use-strict'
 var artistasModelo = require('../MODELO/artistas')
 var artista = new artistasModelo()
+const mongoosePage = require('mongoose-pagination')
 
 
 function añadirArtista(req, res) {
@@ -34,7 +35,7 @@ function buscarArtista(req, res) {
     artistasModelo.findById(artistaID, (err, artistaBD) => {
 
         if (err) {
-            res.status(500).send({ message: 'Ha ocurrido un error' })
+            res.status(500).send({ message: 'Ha ocurrido un error al buscar el artista' })
         } else {
             if (!artistaBD) {
                 res.status(404).send({ message: 'No se ha encontrado el artista' })
@@ -45,7 +46,35 @@ function buscarArtista(req, res) {
     })
 
 }
+
+function buscarArtistas(req, res) {
+
+    if (req.params.page) {
+        var page = req.params.page
+    } else {
+        var page = 1
+    }
+
+    var itemPaginas = 10
+    artistasModelo.find().sort('nombre').
+    paginate(page, itemPaginas, function(err, artistas, total) {
+        if (err) {
+            res.status(500).send({ message: 'Error del servidor' })
+        } else {
+            if (!artistas) {
+                res.status(404).send({ message: 'No hay datos para mostrar en esta página' })
+            } else {
+                res.status(200).send({
+                    pages: total,
+                    artistas: artistas
+                })
+            }
+        }
+    })
+}
+
 module.exports = {
     añadirArtista,
-    buscarArtista
+    buscarArtista,
+    buscarArtistas
 }
