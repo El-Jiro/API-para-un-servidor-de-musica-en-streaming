@@ -20,7 +20,6 @@
         "rest": "^2.0.0"
     },
     "devDependencies": {
-        "@types/node": "^18.0.0",
-        "connect-multiparty": "^2.2.0"
+        "@types/node": "^18.0.0"
     }
 }

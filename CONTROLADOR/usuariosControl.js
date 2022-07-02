@@ -8,6 +8,7 @@ const path = require('path')
 const fs = require('fs')
 
 
+
 function probar(req, res) {
     res.status(200).send({
         message: 'Probando una acción del controlador de usuarios de la api REST con node y mongo'
