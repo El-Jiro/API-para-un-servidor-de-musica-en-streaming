@@ -137,15 +137,17 @@ function eliminarUsuario(req, res) {
 function actualizarFoto(req, res) {
     var user_id = req.params.id
 
-    if (req.files) {
-        var file_path = req.files.image.path
-        var file_array = file_path.split('\\')
-        var file_name = file.split[2]
-        var extension = file_array[2].split('\.')
+    if (req.file) {
 
-        if (extension[1] == 'png' || extension[1] == 'gif' || extension[1] == 'jpg') {
+        var file_path = req.file.image.path
+        var filesplit = file_path.split('\\')
+        var filename = filesplit[2]
+        var extSplit = filename.split('.')
+        var fileExt = extSplit[1]
+        console.log(files)
+        if (fileExt == 'png' || file_path == 'jpg') {
 
-            usuariosModelo.findByIdAndUpdate(user_id, { image: file_array[2] }, (err, userUpdate) => {
+            usuariosModelo.findByIdAndUpdate(user_id, { image: filename[2] }, (err, userUpdate) => {
                 if (err) {
                     res.status(500).send({ message: 'No se ha podido actualizar el usuario' })
                 } else {
