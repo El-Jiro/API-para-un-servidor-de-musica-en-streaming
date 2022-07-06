@@ -98,6 +98,7 @@ function actualizarUsuario(req, res) {
 
     var user_id = req.params.id
     var update = req.body
+    console.log(update)
 
     usuariosModelo.findByIdAndUpdate(user_id, update, (err, userUpdate) => {
         if (err) {
@@ -145,7 +146,7 @@ function actualizarFoto(req, res) {
         var extSplit = filename.split('.')
         var fileExt = extSplit[1]
         console.log(files)
-        if (fileExt == 'png' || file_path == 'jpg') {
+        if (fileExt == 'png' || fileExt == 'jpg') {
 
             usuariosModelo.findByIdAndUpdate(user_id, { image: filename[2] }, (err, userUpdate) => {
                 if (err) {

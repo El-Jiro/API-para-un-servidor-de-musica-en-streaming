@@ -1,6 +1,6 @@
 {
     "name": "conexion_mongodb",
-    "version": "4.4.0",
+    "version": "4.4.1",
     "description": "Una API REST para un servidor de música en streaming",
     "main": "index.js",
     "scripts": {
@@ -15,12 +15,11 @@
         "express": "^4.18.1",
         "jwt-simple": "^0.5.6",
         "moment": "^2.29.3",
-        "mongoose": "^6.3.2",
         "mongoose-pagination": "^1.0.0",
         "rest": "^2.0.0"
     },
     "devDependencies": {
         "@types/node": "^18.0.0",
-        "mongoose": "6.4.2"
+        "mongoose": "^6.4.2"
     }
 }

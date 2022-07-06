@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var schema = mongoose.Schema
 
 var esquemaUsuarios = schema({
+
     nombre: String,
     apellido: String,
     email: String,
