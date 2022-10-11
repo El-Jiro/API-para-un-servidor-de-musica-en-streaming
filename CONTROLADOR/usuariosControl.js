@@ -156,7 +156,7 @@ function actualizarFoto(req, res) {
                         res.status(404).send({ message: 'El usuario no existe' })
                     } else {
                         res.status(200).send({
-                            image: file_name,
+                            image: filename,
                             usuario: userUpdate
                         })
                     }
@@ -171,6 +171,22 @@ function actualizarFoto(req, res) {
 }
 
 
+function obtenerFoto(req, res) {
+
+    var imageFile = req.params.imageFile
+    var rutaFoto = '../FOTOS/usuario/' + imageFile
+    console.log(imageFile)
+
+    fs.exists(imageFile, function(existe) {
+        if (existe) {
+            res.send({ foto: path.resolve(rutaFoto) })
+        } else {
+            res.status(404).send({ message: 'No has subido ninguna imagen con ese nombre' })
+        }
+    })
+}
+
+
 module.exports = {
     probar,
     darBienvenida,
@@ -178,5 +194,6 @@ module.exports = {
     iniciarSesion,
     actualizarUsuario,
     eliminarUsuario,
-    actualizarFoto
+    actualizarFoto,
+    obtenerFoto
 }

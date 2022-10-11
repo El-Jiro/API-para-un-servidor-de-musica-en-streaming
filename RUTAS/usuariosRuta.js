@@ -15,4 +15,5 @@ api.get('/login', usuarioControl.iniciarSesion)
 api.put('/actualizar-usuario/:id', md_auth.validarAcceso, usuarioControl.actualizarUsuario)
 api.delete('/eliminar-usuario/:id', md_auth.validarAcceso, usuarioControl.eliminarUsuario)
 api.post('/actualizar-foto/:id', [md_auth.validarAcceso, dir_fotos], usuarioControl.actualizarFoto)
+api.get('/ver-foto/:imageFile', usuarioControl.obtenerFoto)
 module.exports = api
